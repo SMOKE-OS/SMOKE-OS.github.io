@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMOKE OS — Minimal Arch Linux Powered by Hyprland</title>
+  <meta name="description" content="Official website of SMOKE OS: A minimal, high-performance, independent Arch Linux distribution crafted around Hyprland and Wayland.">
+  <meta name="keywords" content="SMOKE OS, Arch Linux, Hyprland, Wayland, Linux Distro, Minimal OS, Dotfiles, Quickshell">
+  
+  <!-- OpenGraph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://smoke-os.github.io/">
+  <meta property="og:title" content="SMOKE OS — Minimal by design. Powerful by nature.">
+  <meta property="og:description" content="An ultra-responsive Arch Linux distribution tailored around Hyprland Wayland compositor.">
+  <meta property="og:image" content="https://smoke-os.github.io/assets/images/logo.svg">
+
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            smoke: {
+              crust: '#0d0e15',
+              base: '#11111b',
+              mantle: '#181825',
+              surface: '#1e1e2e',
+              border: '#313244',
+              blue: '#89b4fa',
+              mauve: '#cba6f7',
+              teal: '#94e2d5',
+              green: '#a6e3a1',
+              red: '#f38ba8',
+              yellow: '#f9e2af',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-smoke-crust text-gray-200 antialiased selection:bg-smoke-blue/20 selection:text-smoke-blue">
+
+  <!-- Background Ambiance -->
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+  <div class="ambient-glow-3"></div>
+
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-50 backdrop-blur-xl bg-smoke-crust/80 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-3 group">
+          <img src="assets/images/logo.svg" alt="SMOKE OS Logo" class="w-9 h-9 transition-transform group-hover:scale-105">
+          <div class="flex flex-col">
+            <span class="font-bold text-lg tracking-wider text-white flex items-center gap-2">
+              SMOKE <span class="text-smoke-blue font-mono text-sm px-1.5 py-0.5 rounded bg-smoke-blue/10 border border-smoke-blue/30">OS</span>
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+          <a href="#features" class="hover:text-smoke-blue transition-colors">Features</a>
+          <a href="#showcase" class="hover:text-smoke-blue transition-colors">Showcase</a>
+          <a href="#keybindings" class="hover:text-smoke-blue transition-colors">Keybindings</a>
+          <a href="#download" class="hover:text-smoke-blue transition-colors">Download</a>
+          <a href="#quickstart" class="hover:text-smoke-blue transition-colors">Quickstart</a>
+          <a href="#faq" class="hover:text-smoke-blue transition-colors">FAQ</a>
+        </nav>
+
+        <!-- GitHub & Actions -->
+        <div class="hidden md:flex items-center gap-3">
+          <a href="https://github.com/SMOKE-OS" target="_blank" rel="noopener noreferrer" 
+             class="flex items-center gap-2 px-3 py-1.5 text-xs font-mono font-medium rounded-lg bg-smoke-surface hover:bg-smoke-border transition-colors border border-white/10 text-gray-200">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+            <span>GitHub</span>
+          </a>
+          <a href="#download" class="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-smoke-blue text-smoke-crust hover:bg-opacity-90 transition-all shadow-lg shadow-smoke-blue/20">
+            <span>Download</span>
+            <span class="dynamic-version text-[10px] bg-black/20 px-1 rounded font-mono">v0.1BETA</span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="flex md:hidden">
+          <button id="mobile-menu-btn" class="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-smoke-surface focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-smoke-mantle/95 px-4 pt-3 pb-6 space-y-2">
+      <a href="#features" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-smoke-surface">Features</a>
+      <a href="#showcase" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-smoke-surface">Showcase</a>
+      <a href="#keybindings" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-smoke-surface">Keybindings</a>
+      <a href="#download" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-smoke-surface">Download</a>
+      <a href="#quickstart" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-smoke-surface">Quickstart</a>
+      <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-smoke-surface">FAQ</a>
+      <div class="pt-3 border-t border-white/5 flex flex-col gap-2">
+        <a href="https://github.com/SMOKE-OS" target="_blank" class="flex items-center justify-center gap-2 w-full py-2 bg-smoke-surface rounded-lg text-sm font-medium">
+          GitHub Organization
+        </a>
+        <a href="#download" class="flex items-center justify-center gap-2 w-full py-2 bg-smoke-blue text-smoke-crust font-semibold rounded-lg text-sm">
+          Download ISO
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="text-center max-w-4xl mx-auto space-y-6">
+        
+        <!-- Status Badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-smoke-blue/10 border border-smoke-blue/20 text-xs font-mono text-smoke-blue mb-4">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Official Release v0.1BETA is now live</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight">
+          Less clutter. More control.<br>
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-smoke-blue via-smoke-teal to-smoke-mauve">
+            Pure Linux.
+          </span>
+        </h1>
+
+        <p class="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+          <strong>SMOKE OS</strong> is an independent, minimal Arch Linux distribution crafted around 
+          <strong>Hyprland</strong> dynamic Wayland tiling and <strong>Quickshell</strong>. Built for peak performance, sub-second latency, and uncompromising aesthetic clarity.
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <a href="#download" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-smoke-blue to-blue-500 text-smoke-crust font-bold text-sm tracking-wide shadow-xl shadow-smoke-blue/20 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span>Download ISO</span>
+            <span class="dynamic-version text-xs bg-black/20 px-2 py-0.5 rounded-md font-mono">v0.1BETA</span>
+          </a>
+
+          <a href="#quickstart" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-smoke-surface hover:bg-smoke-border border border-white/10 text-white font-medium text-sm transition-all flex items-center justify-center gap-2">
+            <svg class="w-5 h-5 text-smoke-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Try in QEMU</span>
+          </a>
+
+          <a href="https://github.com/SMOKE-OS" target="_blank" rel="noopener noreferrer" 
+             class="w-full sm:w-auto px-6 py-3.5 rounded-xl border border-white/10 hover:border-smoke-blue/40 text-gray-300 hover:text-white font-medium text-sm transition-all flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+            <span>GitHub Org</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Showcase Mockup -->
+      <div id="showcase" class="mt-16 max-w-5xl mx-auto">
+        <div class="terminal-window border border-white/10 rounded-2xl overflow-hidden shadow-2xl relative">
+          <!-- Terminal Titlebar -->
+          <div class="terminal-header flex items-center justify-between px-4 py-3 bg-smoke-mantle">
+            <div class="flex items-center">
+              <span class="terminal-dot dot-red"></span>
+              <span class="terminal-dot dot-yellow"></span>
+              <span class="terminal-dot dot-green"></span>
+              <span class="ml-3 text-xs text-gray-400 font-mono">smoke@archiso ~ kitty</span>
+            </div>
+            <div class="text-xs text-smoke-blue font-mono flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-smoke-blue animate-ping"></span>
+              <span>Hyprland (Wayland)</span>
+            </div>
+          </div>
+
+          <!-- Terminal Content with Fastfetch style specs -->
+          <div class="p-6 font-mono text-xs sm:text-sm bg-smoke-base/95 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+            
+            <!-- ASCII Smoke Art -->
+            <div class="md:col-span-5 text-smoke-blue leading-relaxed font-semibold">
+              <pre class="text-[11px] sm:text-xs text-smoke-teal/90">
+   ____  __  _______  __ __ ______
+  / __ \/  |/  / __ \/ //_// ____/
+ / /_/ / /|_/ / / / / ,&lt;  / __/   
+/ ____/ /  / / /_/ / /| |/ /___   
+\/   /_/  /_/\____/_/ |_/_____/   
+        OS [ v0.1BETA ]
+              </pre>
+              <div class="mt-4 text-xs text-gray-400 font-normal">
+                <p class="text-gray-300 font-medium">"Find clarity in the chaos."</p>
+                <div class="mt-3 flex gap-1.5">
+                  <span class="w-3.5 h-3.5 rounded bg-smoke-red"></span>
+                  <span class="w-3.5 h-3.5 rounded bg-smoke-yellow"></span>
+                  <span class="w-3.5 h-3.5 rounded bg-smoke-green"></span>
+                  <span class="w-3.5 h-3.5 rounded bg-smoke-teal"></span>
+                  <span class="w-3.5 h-3.5 rounded bg-smoke-blue"></span>
+                  <span class="w-3.5 h-3.5 rounded bg-smoke-mauve"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Neofetch System Information -->
+            <div class="md:col-span-7 space-y-2 border-t md:border-t-0 md:border-l border-white/5 pt-4 md:pt-0 md:pl-6 text-gray-300">
+              <div class="text-smoke-mauve font-bold pb-1 border-b border-white/5">
+                liveuser<span class="text-gray-400">@</span>smoke-os
+              </div>
+              <div class="grid grid-cols-3 gap-1">
+                <span class="text-gray-500 font-semibold">OS:</span>
+                <span class="col-span-2 text-white font-medium">SMOKE OS x86_64</span>
+              </div>
+              <div class="grid grid-cols-3 gap-1">
+                <span class="text-gray-500 font-semibold">Base:</span>
+                <span class="col-span-2 text-smoke-blue">Arch Linux (Rolling)</span>
+              </div>
+              <div class="grid grid-cols-3 gap-1">
+                <span class="text-gray-500 font-semibold">Compositor:</span>
+                <span class="col-span-2 text-smoke-teal">Hyprland (Wayland)</span>
+              </div>
+              <div class="grid grid-cols-3 gap-1">
+                <span class="text-gray-500 font-semibold">Desktop Shell:</span>
+                <span class="col-span-2 text-gray-200">Quickshell</span>
+              </div>
+              <div class="grid grid-cols-3 gap-1">
+                <span class="text-gray-500 font-semibold">Terminal:</span>
+                <span class="col-span-2 text-gray-200">Kitty (Smoke Dark Theme)</span>
+              </div>
+              <div class="grid grid-cols-3 gap-1">
+                <span class="text-gray-500 font-semibold">Idle RAM:</span>
+                <span class="col-span-2 text-emerald-400 font-semibold">~340 MiB / 16 GiB</span>
+              </div>
+              <div class="grid grid-cols-3 gap-1">
+                <span class="text-gray-500 font-semibold">Bootloader:</span>
+                <span class="col-span-2 text-gray-200">systemd-boot (UEFI)</span>
+              </div>
+              <div class="grid grid-cols-3 gap-1">
+                <span class="text-gray-500 font-semibold">Build Recipe:</span>
+                <span class="col-span-2 text-smoke-mauve">archiso + GitHub Actions CI</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Philosophy / Features Section -->
+    <section id="features" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <h2 class="text-xs font-mono uppercase tracking-widest text-smoke-blue">Core Architecture</h2>
+        <h3 class="text-3xl sm:text-4xl font-bold text-white">Engineered for pure control & speed</h3>
+        <p class="text-gray-400 text-sm sm:text-base">
+          Every default package, script, and keybinding in SMOKE OS must justify its presence. No redundant services, no background daemons.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Feature 1 -->
+        <div class="glass-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-smoke-blue mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <h4 class="text-lg font-bold text-white mb-2">Sub-second Latency</h4>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Native Wayland protocols bypass legacy X11 baggage. Experience tearing-free rendering, silky 144Hz+ animations, and near-zero display overhead.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5 text-xs text-smoke-blue font-mono">
+            Hyprland + Wayland Native
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="glass-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-smoke-teal mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+            </div>
+            <h4 class="text-lg font-bold text-white mb-2">Arch Linux Rolling Base</h4>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Always up to date with the latest Linux kernels, bleeding-edge packages via `pacman`, and unlimited power through the Arch User Repository (AUR).
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5 text-xs text-smoke-teal font-mono">
+            Pacman & AUR Ready
+          </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="glass-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-smoke-mauve mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+              </svg>
+            </div>
+            <h4 class="text-lg font-bold text-white mb-2">Smoke Dark Aesthetic</h4>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Unified Catppuccin Mocha / Smoke Dark color palette across Kitty terminal, status bar, dynamic window borders, and dual-pass blur shaders.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5 text-xs text-smoke-mauve font-mono">
+            Dual-Pass Glassmorphism
+          </div>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="glass-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <h4 class="text-lg font-bold text-white mb-2">Zero Telemetry & Bloat</h4>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              No tracking, no analytical beacons, no sponsored software, and zero proprietary lock-in. 100% auditable open-source code and build scripts.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5 text-xs text-emerald-400 font-mono">
+            Privacy First & Open Source
+          </div>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="glass-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-smoke-yellow mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+            </div>
+            <h4 class="text-lg font-bold text-white mb-2">Reproducible Builds</h4>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Live ISOs are generated through automated GitHub Actions workflows using clean Arch Linux containers and official `archiso` recipes.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5 text-xs text-smoke-yellow font-mono">
+            Automated CI/CD Release Matrix
+          </div>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="glass-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-smoke-red mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+              </svg>
+            </div>
+            <h4 class="text-lg font-bold text-white mb-2">Granular Dotfiles Sync</h4>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              Our official dotfiles repository (`smoke-configs`) includes automated backup and sync scripts so you can test SMOKE configs on any Arch install.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5 text-xs text-smoke-red font-mono">
+            Non-Destructive Installer
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Interactive Keybindings Section -->
+    <section id="keybindings" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+      <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+        <h2 class="text-xs font-mono uppercase tracking-widest text-smoke-blue">Keyboard-Driven Workflow</h2>
+        <h3 class="text-3xl sm:text-4xl font-bold text-white">Default Keybindings Cheat Sheet</h3>
+        <p class="text-gray-400 text-sm sm:text-base">
+          Fly through tasks at lightning speed. All keybindings can be fully modified in <code class="text-smoke-blue font-mono text-xs bg-smoke-surface px-1.5 py-0.5 rounded">~/.config/hypr/hyprland.conf</code>.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto glass-card overflow-hidden">
+        
+        <!-- Search and Filter Controls -->
+        <div class="p-4 sm:p-6 border-b border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          
+          <!-- Search Input -->
+          <div class="relative w-full sm:w-72">
+            <input type="text" id="keybind-search" placeholder="Search keys or actions (e.g. Kitty, Move)..." 
+                   class="w-full bg-smoke-surface border border-white/10 rounded-lg px-3.5 py-2 text-xs sm:text-sm text-white placeholder-gray-500 focus:outline-none focus:border-smoke-blue/60 transition-colors">
+            <svg class="w-4 h-4 text-gray-500 absolute right-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+
+          <!-- Category Filter Pills -->
+          <div class="flex items-center gap-1.5 flex-wrap justify-center sm:justify-end text-xs">
+            <button class="keybind-filter-btn px-3 py-1.5 rounded-lg font-medium border bg-blue-500/20 text-smoke-blue border-blue-500/40 transition-colors" data-category="all">
+              All
+            </button>
+            <button class="keybind-filter-btn px-3 py-1.5 rounded-lg font-medium border bg-white/5 text-gray-400 border-transparent transition-colors hover:text-white" data-category="apps">
+              Apps
+            </button>
+            <button class="keybind-filter-btn px-3 py-1.5 rounded-lg font-medium border bg-white/5 text-gray-400 border-transparent transition-colors hover:text-white" data-category="windows">
+              Windows
+            </button>
+            <button class="keybind-filter-btn px-3 py-1.5 rounded-lg font-medium border bg-white/5 text-gray-400 border-transparent transition-colors hover:text-white" data-category="workspaces">
+              Workspaces
+            </button>
+            <button class="keybind-filter-btn px-3 py-1.5 rounded-lg font-medium border bg-white/5 text-gray-400 border-transparent transition-colors hover:text-white" data-category="navigation">
+              Navigation
+            </button>
+          </div>
+        </div>
+
+        <!-- Keybindings List Container -->
+        <div id="keybindings-list" class="divide-y divide-white/5">
+          <!-- Rendered via main.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <h2 class="text-xs font-mono uppercase tracking-widest text-smoke-blue">Get SMOKE OS</h2>
+        <h3 class="text-3xl sm:text-4xl font-bold text-white">Download Live Installation Media</h3>
+        <p class="text-gray-400 text-sm sm:text-base">
+          Get the latest official ISO build. Boot directly from a live USB or run in a virtual machine without altering your hardware.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="glass-card p-6 sm:p-10 border border-smoke-blue/30 relative overflow-hidden">
+          
+          <!-- Ambient accent inside card -->
+          <div class="absolute -top-24 -right-24 w-64 h-64 bg-smoke-blue/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+            
+            <div class="space-y-4">
+              <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-md bg-smoke-blue/15 border border-smoke-blue/40 text-smoke-blue font-mono font-bold text-xs uppercase">
+                  Latest Build
+                </span>
+                <span class="text-white font-bold text-xl dynamic-version">v0.1BETA</span>
+                <span class="text-xs text-gray-400 font-mono dynamic-iso-size">1.96 GiB</span>
+              </div>
+
+              <h4 class="text-2xl font-bold text-white dynamic-iso-filename">
+                Smoke_os_20261023_0356_v0.1BETA.iso
+              </h4>
+
+              <p class="text-sm text-gray-400 max-w-xl">
+                Features modern UEFI/BIOS bootloader, live Hyprland desktop, Kitty terminal with customized dotfiles, and Quickshell application launcher.
+              </p>
+
+              <!-- SHA256 Checksum block -->
+              <div class="bg-smoke-base p-3.5 rounded-lg border border-white/10 space-y-1.5 font-mono text-xs">
+                <div class="flex items-center justify-between text-gray-400">
+                  <span class="text-[11px] uppercase tracking-wider text-gray-500 font-bold">SHA256 Checksum</span>
+                  <button class="copy-trigger text-smoke-blue hover:text-white transition-colors" data-copy-text="e6f4818c644eafa4ae68fc330ec92562bca609201997fe109c1fa6e36d5ba596">
+                    <svg class="w-3.5 h-3.5 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                    <span>Copy Hash</span>
+                  </button>
+                </div>
+                <div class="text-gray-300 break-all select-all text-[11px]">
+                  e6f4818c644eafa4ae68fc330ec92562bca609201997fe109c1fa6e36d5ba596
+                </div>
+              </div>
+            </div>
+
+            <!-- Download Action Buttons -->
+            <div class="flex flex-col gap-3 w-full lg:w-64 flex-shrink-0">
+              <a href="https://github.com/SMOKE-OS/smoke-iso/releases/download/v0.1BETA/Smoke_os_20261023_0356_v0.1BETA.iso" 
+                 class="dynamic-download-btn w-full py-4 rounded-xl bg-gradient-to-r from-smoke-blue to-blue-500 text-smoke-crust font-bold text-center text-sm shadow-xl shadow-smoke-blue/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                <span>Direct Download</span>
+              </a>
+
+              <a href="https://github.com/SMOKE-OS/smoke-iso/releases/download/v0.1BETA/Smoke_os_20261023_0356_v0.1BETA.iso.sha256" 
+                 class="dynamic-sha-link w-full py-2.5 rounded-xl bg-smoke-surface hover:bg-smoke-border border border-white/10 text-gray-300 hover:text-white font-medium text-center text-xs transition-colors flex items-center justify-center gap-2">
+                <svg class="w-4 h-4 text-smoke-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                <span>Download SHA256</span>
+              </a>
+
+              <a href="https://github.com/SMOKE-OS/smoke-iso/releases" target="_blank" rel="noopener noreferrer" 
+                 class="w-full text-center text-xs text-gray-400 hover:text-smoke-blue transition-colors pt-1">
+                View all releases on GitHub &rarr;
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quickstart & Testing Guide -->
+    <section id="quickstart" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+      <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <h2 class="text-xs font-mono uppercase tracking-widest text-smoke-blue">Installation & Testing</h2>
+        <h3 class="text-3xl sm:text-4xl font-bold text-white">Get Running in Minutes</h3>
+        <p class="text-gray-400 text-sm sm:text-base">
+          Choose how you want to experience SMOKE OS: test safely in a virtual machine, flash to a USB stick, or build from scratch.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto glass-card p-6 sm:p-8">
+        
+        <!-- Guide Tabs -->
+        <div class="flex items-center gap-2 border-b border-white/5 pb-4 mb-6">
+          <button id="qemu-tab" onclick="switchGuideTab('qemu-tab')" class="px-4 py-2 text-sm font-medium rounded-lg bg-blue-500/20 text-smoke-blue border border-blue-500/30 transition-all">
+            1. Test in QEMU (Recommended)
+          </button>
+          <button id="usb-tab" onclick="switchGuideTab('usb-tab')" class="px-4 py-2 text-sm font-medium rounded-lg text-gray-400 hover:text-white bg-transparent transition-all">
+            2. Flash Live USB
+          </button>
+          <button id="source-tab" onclick="switchGuideTab('source-tab')" class="px-4 py-2 text-sm font-medium rounded-lg text-gray-400 hover:text-white bg-transparent transition-all">
+            3. Build From Source
+          </button>
+        </div>
+
+        <!-- QEMU Content -->
+        <div id="qemu-content" class="space-y-4">
+          <p class="text-sm text-gray-300">
+            Launch the live ISO directly with KVM hardware acceleration. No installation or disk partitioning required:
+          </p>
+
+          <div class="relative bg-smoke-base p-4 rounded-lg font-mono text-xs text-smoke-teal border border-white/10 flex items-center justify-between">
+            <code id="qemu-cmd" class="overflow-x-auto pr-8">qemu-system-x86_64 -enable-kvm -m 4G -smp 2 -cdrom Smoke_os_*.iso -vga virtio -display sdl,gl=on</code>
+            <button class="copy-trigger text-gray-400 hover:text-white transition-colors flex-shrink-0" data-target="#qemu-cmd">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="text-xs text-gray-400 space-y-1">
+            <p>&bull; <strong>RAM</strong>: 4GB allocated to the VM (min 2GB required).</p>
+            <p>&bull; <strong>Display</strong>: OpenGL enabled with <code class="text-smoke-blue font-mono">virtio</code> for full Wayland GPU acceleration.</p>
+          </div>
+        </div>
+
+        <!-- USB Content -->
+        <div id="usb-content" class="hidden space-y-4">
+          <p class="text-sm text-gray-300">
+            Write the downloaded ISO image to a USB flash drive (replace <code class="text-smoke-blue font-mono">/dev/sdX</code> with your USB drive identifier):
+          </p>
+
+          <div class="relative bg-smoke-base p-4 rounded-lg font-mono text-xs text-smoke-yellow border border-white/10 flex items-center justify-between">
+            <code id="dd-cmd" class="overflow-x-auto pr-8">sudo dd bs=4M if=Smoke_os_*.iso of=/dev/sdX status=progress oflag=sync</code>
+            <button class="copy-trigger text-gray-400 hover:text-white transition-colors flex-shrink-0" data-target="#dd-cmd">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+            </button>
+          </div>
+
+          <p class="text-xs text-gray-400">
+            Alternatively, use <a href="https://ventoy.net" target="_blank" class="text-smoke-blue underline">Ventoy</a> or Rufus (DD mode) on Windows.
+          </p>
+        </div>
+
+        <!-- Source Content -->
+        <div id="source-content" class="hidden space-y-4">
+          <p class="text-sm text-gray-300">
+            Clone the <code class="text-smoke-blue font-mono">smoke-iso</code> repository on an Arch Linux machine and compile natively:
+          </p>
+
+          <div class="relative bg-smoke-base p-4 rounded-lg font-mono text-xs text-smoke-mauve border border-white/10 flex items-center justify-between">
+            <code id="build-cmd" class="overflow-x-auto pr-8">git clone https://github.com/SMOKE-OS/smoke-iso.git && cd smoke-iso && sudo mkarchiso -v -w /tmp/archiso-work -o ./out .</code>
+            <button class="copy-trigger text-gray-400 hover:text-white transition-colors flex-shrink-0" data-target="#build-cmd">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <h2 class="text-xs font-mono uppercase tracking-widest text-smoke-blue">Common Questions</h2>
+        <h3 class="text-3xl sm:text-4xl font-bold text-white">Frequently Asked Questions</h3>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-4">
+        
+        <details class="glass-card p-5 group cursor-pointer" open>
+          <summary class="font-bold text-white text-base flex items-center justify-between list-none">
+            <span>What makes SMOKE OS different from vanilla Arch Linux?</span>
+            <span class="text-smoke-blue group-open:rotate-180 transition-transform">&darr;</span>
+          </summary>
+          <p class="mt-3 text-sm text-gray-400 leading-relaxed">
+            SMOKE OS comes with a meticulously configured Hyprland Wayland environment, Kitty terminal, Quickshell launcher, custom Plymouth splash, and unified Catppuccin Mocha / Smoke Dark color palette out-of-the-box. It saves hours of manual tiling window manager configuration while retaining 100% Arch compatibility.
+          </p>
+        </details>
+
+        <details class="glass-card p-5 group cursor-pointer">
+          <summary class="font-bold text-white text-base flex items-center justify-between list-none">
+            <span>Does SMOKE OS work with NVIDIA graphics cards?</span>
+            <span class="text-smoke-blue group-open:rotate-180 transition-transform">&darr;</span>
+          </summary>
+          <p class="mt-3 text-sm text-gray-400 leading-relaxed">
+            Yes, Hyprland supports NVIDIA hardware with proprietary drivers (<code class="text-smoke-blue font-mono text-xs">nvidia-dkms</code>). We recommend setting the required environment variables (<code class="text-smoke-blue font-mono text-xs">LIBVA_DRIVER_NAME=nvidia</code> and <code class="text-smoke-blue font-mono text-xs">GBM_BACKEND=nvidia-drm</code>) as documented in our configuration guides.
+          </p>
+        </details>
+
+        <details class="glass-card p-5 group cursor-pointer">
+          <summary class="font-bold text-white text-base flex items-center justify-between list-none">
+            <span>Can I try SMOKE OS configs on my existing Arch install?</span>
+            <span class="text-smoke-blue group-open:rotate-180 transition-transform">&darr;</span>
+          </summary>
+          <p class="mt-3 text-sm text-gray-400 leading-relaxed">
+            Yes! Check out our <a href="https://github.com/SMOKE-OS/smoke-configs" target="_blank" class="text-smoke-blue underline">smoke-configs</a> repository. It includes an interactive <code class="text-smoke-blue font-mono text-xs">install.sh</code> script that backs up your current dotfiles before installing the SMOKE OS desktop configuration.
+          </p>
+        </details>
+
+        <details class="glass-card p-5 group cursor-pointer">
+          <summary class="font-bold text-white text-base flex items-center justify-between list-none">
+            <span>How do I report bugs or submit feature requests?</span>
+            <span class="text-smoke-blue group-open:rotate-180 transition-transform">&darr;</span>
+          </summary>
+          <p class="mt-3 text-sm text-gray-400 leading-relaxed">
+            Please open an issue on the relevant repository under our <a href="https://github.com/SMOKE-OS" target="_blank" class="text-smoke-blue underline">GitHub Organization</a> (e.g. <code class="text-smoke-blue font-mono text-xs">smoke-iso</code> for build issues, or <code class="text-smoke-blue font-mono text-xs">smoke-configs</code> for dotfile and keybinding improvements).
+          </p>
+        </details>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/5 bg-smoke-crust py-12 px-4 sm:px-6 lg:px-8 mt-20">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <!-- Brand & Copyright -->
+      <div class="flex items-center gap-3">
+        <img src="assets/images/logo.svg" alt="SMOKE OS" class="w-7 h-7">
+        <div class="text-xs text-gray-500">
+          <p class="text-gray-300 font-semibold">&copy; 2026 SMOKE OS Community Project.</p>
+          <p>Released under GPLv3 & MIT Licenses. Not officially affiliated with Arch Linux or Hyprland.</p>
+        </div>
+      </div>
+
+      <!-- Footer Repo Links -->
+      <div class="flex items-center gap-6 text-xs text-gray-400 font-mono">
+        <a href="https://github.com/SMOKE-OS/smoke-iso" target="_blank" class="hover:text-smoke-blue transition-colors">smoke-iso</a>
+        <a href="https://github.com/SMOKE-OS/smoke-configs" target="_blank" class="hover:text-smoke-blue transition-colors">smoke-configs</a>
+        <a href="https://github.com/SMOKE-OS/.github" target="_blank" class="hover:text-smoke-blue transition-colors">.github</a>
+        <a href="https://github.com/SMOKE-OS/SMOKE-OS.github.io" target="_blank" class="hover:text-smoke-blue transition-colors">website-source</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
